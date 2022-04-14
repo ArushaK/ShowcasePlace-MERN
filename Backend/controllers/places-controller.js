@@ -101,6 +101,7 @@ const createPlace = async (req, res, next) => {
     session.startTransaction();
     await createdPlace.save({ session: session });
     user.places.push(createdPlace);
+    //console.log(user.places);
     await user.save({ session: session });
     await session.commitTransaction();
   } catch (err) {
