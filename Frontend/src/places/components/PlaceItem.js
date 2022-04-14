@@ -5,9 +5,11 @@ import Modal from "../../shared/components/UIElements/Modal";
 import "./PlaceItem.css";
 import Map from "../../shared/components/UIElements/Map";
 import { AuthContext } from "../../shared/context/auth-context";
+import { useHttpClient } from "../../shared/hooks/http-hook";
 
 function PlaceItem(props) {
   const auth = useContext(AuthContext);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [showMap, setShowMap] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -19,9 +21,8 @@ function PlaceItem(props) {
   const cancelDelete = () => {
     setShowConfirm(false);
   };
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     setShowConfirm(false);
-    console.log("DELETING...");
   };
 
   return (
