@@ -6,6 +6,8 @@ import "./PlaceItem.css";
 import Map from "../../shared/components/UIElements/Map";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 
 function PlaceItem(props) {
   const auth = useContext(AuthContext);
@@ -23,10 +25,18 @@ function PlaceItem(props) {
   };
   const confirmDelete = async () => {
     setShowConfirm(false);
+    try {
+      await sendRequest(
+        `http://localhost:5000/api/places/${props.id}`,
+        "DELETE"
+      );
+      props.onDelete(props.id);
+    } catch (err) {}
   };
 
   return (
     <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
       <Modal
         show={showMap}
         onCancel={closeMap}
@@ -62,7 +72,8 @@ function PlaceItem(props) {
       </Modal>
 
       <li className="place-item">
-        <Card>
+        <Card className="place-item__content">
+          {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
             <img src={props.image} alt={props.title} />
           </div>
@@ -75,10 +86,10 @@ function PlaceItem(props) {
             <Button inverse onClick={openMap}>
               VIEW ON MAP
             </Button>
-            {auth.isLoggedIn && (
+            {auth.userId === props.creatorId && (
               <Button to={`/places/${props.id}`}>EDIT</Button>
             )}
-            {auth.isLoggedIn && (
+            {auth.userId === props.creatorId && (
               <Button danger onClick={showDeleteWarning}>
                 DELETE
               </Button>

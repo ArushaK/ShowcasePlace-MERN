@@ -118,7 +118,7 @@ const Auth = () => {
             type="email"
             label="Email"
             validators={[VALIDATOR_EMAIL()]}
-            errorText="Please enter a valid Email Address!"
+            errorText="Please enter a valid email address!"
             onInput={InputHandler}
           />
           <Input
@@ -126,7 +126,7 @@ const Auth = () => {
             element="input"
             type="password"
             label="Password"
-            validators={[VALIDATOR_MINLENGTH(5)]}
+            validators={[VALIDATOR_MINLENGTH(6)]}
             errorText="Please enter a valid password!"
             onInput={InputHandler}
           />
