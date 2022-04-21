@@ -5,6 +5,7 @@ import Input from "../../shared/components/FormElements/Input";
 import Card from "../../shared/components/UIElements/Card";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import useForm from "../../shared/hooks/form-hook";
@@ -36,6 +37,7 @@ const Auth = () => {
 
   const loginHandler = async (event) => {
     event.preventDefault();
+    console.log(formState.inputs);
 
     if (isLogin) {
       try {
@@ -75,7 +77,7 @@ const Auth = () => {
   const signupHandler = () => {
     if (!isLogin) {
       setFormdata(
-        { ...formState.inputs, name: undefined },
+        { ...formState.inputs, name: undefined, image: undefined },
         formState.inputs.email.isvalid && formState.inputs.password.isvalid
       );
     } else {
@@ -84,6 +86,10 @@ const Auth = () => {
           ...formState.inputs,
           name: {
             value: "",
+            isvalid: false,
+          },
+          image: {
+            value: null,
             isvalid: false,
           },
         },
@@ -112,6 +118,7 @@ const Auth = () => {
               onInput={InputHandler}
             />
           )}
+          {!isLogin && <ImageUpload center id="image" onInput={InputHandler} />}
           <Input
             id="email"
             element="input"
