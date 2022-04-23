@@ -52,7 +52,7 @@ const Auth = () => {
             "Content-Type": "application/json",
           }
         );
-        auth.login(responseData.user.id);
+        auth.login(responseData.userId, responseData.token);
       } catch (err) {}
     } else {
       try {
@@ -61,14 +61,13 @@ const Auth = () => {
         formData.append("name", formState.inputs.name.value);
         formData.append("password", formState.inputs.password.value);
         formData.append("image", formState.inputs.image.value);
-
         const responseData = await sendRequest(
           "http://localhost:5000/api/users/signup",
           "POST",
           formData
         );
 
-        auth.login(responseData.user.id);
+        auth.login(responseData.userId, responseData.token);
       } catch (err) {}
     }
   };
@@ -108,8 +107,8 @@ const Auth = () => {
         <form onSubmit={loginHandler}>
           {!isLogin && (
             <Input
-              id="name"
               element="input"
+              id="name"
               type="text"
               label="Your Name"
               validators={[VALIDATOR_REQUIRE()]}
