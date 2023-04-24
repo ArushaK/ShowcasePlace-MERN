@@ -1,0 +1,9 @@
+{
+  "env": {
+    "DB_USER": "arusha",
+    "DB_PASSWORD": "mern07",
+    "DB_NAME": "ShowcasePlaces",
+    "GOOGLE_API": "AIzaSyANlPpO2NfjiJb75dSc-h9A2b0XN-j_j0Q",
+    "JWT_KEY": "supersecret_dont_share"
+  }
+}

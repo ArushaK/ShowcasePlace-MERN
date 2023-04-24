@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
 
 import {
   VALIDATOR_MINLENGTH,
@@ -18,7 +20,8 @@ import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 function NewPlace(props) {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
+  const history = useHistory();
   const [formState, InputHandler] = useForm(
     {
       title: {
@@ -49,10 +52,16 @@ function NewPlace(props) {
       formData.append("description", formState.inputs.description.value);
       formData.append("address", formState.inputs.address.value);
       formData.append("image", formState.inputs.image.value);
-      await sendRequest("http://localhost:5000/api/places", "POST", formData, {
-        Authorization: "Bearer " + auth.token,
-      });
-      navigate("/");
+      await sendRequest(
+        process.env.REACT_APP_BACKEND_URL + "/places",
+        "POST",
+        formData,
+        {
+          Authorization: "Bearer " + auth.token,
+        }
+      );
+      //navigate("/");
+      history.push("/");
     } catch (err) {}
   };
 

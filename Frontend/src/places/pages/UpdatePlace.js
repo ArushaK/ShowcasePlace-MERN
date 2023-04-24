@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+// import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import "./PlaceForm.css";
 import Button from "../../shared/components/FormElements/Button";
@@ -17,7 +18,8 @@ import { AuthContext } from "../../shared/context/auth-context";
 
 const UpdatePlace = () => {
   const auth = useContext(AuthContext);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
+  const history = useHistory();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPlace, setLoadedPlace] = useState();
   const placeId = useParams().placeId;
@@ -40,7 +42,7 @@ const UpdatePlace = () => {
     const fetchPlace = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/places/${placeId}`
+          `${process.env.REACT_APP_BACKEND_URL}/places/${placeId}`
         );
 
         setLoadedPlace(responseData.place);
@@ -67,7 +69,7 @@ const UpdatePlace = () => {
 
     try {
       await sendRequest(
-        `http://localhost:5000/api/places/${placeId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/places/${placeId}`,
         "PATCH",
         JSON.stringify({
           title: formState.inputs.title.value,
@@ -78,7 +80,8 @@ const UpdatePlace = () => {
           Authorization: "Bearer " + auth.token,
         }
       );
-      navigate("/" + auth.userId + "/places");
+      history.push("/" + auth.userId + "/places");
+      //navigate("/" + auth.userId + "/places");
     } catch (err) {}
   };
 

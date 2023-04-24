@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d2744c22.css",
+    "main.js": "/static/js/main.f0434e3a.js",
+    "static/css/542.db61d9ac.chunk.css": "/static/css/542.db61d9ac.chunk.css",
+    "static/js/542.180aed4a.chunk.js": "/static/js/542.180aed4a.chunk.js",
+    "static/css/99.3517607e.chunk.css": "/static/css/99.3517607e.chunk.css",
+    "static/js/99.506abde9.chunk.js": "/static/js/99.506abde9.chunk.js",
+    "static/css/925.a70474a5.chunk.css": "/static/css/925.a70474a5.chunk.css",
+    "static/js/925.6a0d8137.chunk.js": "/static/js/925.6a0d8137.chunk.js",
+    "static/css/743.1ede6c0d.chunk.css": "/static/css/743.1ede6c0d.chunk.css",
+    "static/js/743.c2e36634.chunk.js": "/static/js/743.c2e36634.chunk.js",
+    "static/css/191.6badd8dd.chunk.css": "/static/css/191.6badd8dd.chunk.css",
+    "static/js/191.2eeabdc4.chunk.js": "/static/js/191.2eeabdc4.chunk.js",
+    "static/js/491.372e797f.chunk.js": "/static/js/491.372e797f.chunk.js",
+    "index.html": "/index.html",
+    "main.d2744c22.css.map": "/static/css/main.d2744c22.css.map",
+    "main.f0434e3a.js.map": "/static/js/main.f0434e3a.js.map",
+    "542.db61d9ac.chunk.css.map": "/static/css/542.db61d9ac.chunk.css.map",
+    "542.180aed4a.chunk.js.map": "/static/js/542.180aed4a.chunk.js.map",
+    "99.3517607e.chunk.css.map": "/static/css/99.3517607e.chunk.css.map",
+    "99.506abde9.chunk.js.map": "/static/js/99.506abde9.chunk.js.map",
+    "925.a70474a5.chunk.css.map": "/static/css/925.a70474a5.chunk.css.map",
+    "925.6a0d8137.chunk.js.map": "/static/js/925.6a0d8137.chunk.js.map",
+    "743.1ede6c0d.chunk.css.map": "/static/css/743.1ede6c0d.chunk.css.map",
+    "743.c2e36634.chunk.js.map": "/static/js/743.c2e36634.chunk.js.map",
+    "191.6badd8dd.chunk.css.map": "/static/css/191.6badd8dd.chunk.css.map",
+    "191.2eeabdc4.chunk.js.map": "/static/js/191.2eeabdc4.chunk.js.map",
+    "491.372e797f.chunk.js.map": "/static/js/491.372e797f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2744c22.css",
+    "static/js/main.f0434e3a.js"
+  ]
+}
